@@ -1,0 +1,109 @@
+<mat-card-content>
+  <form class="form-group bmd-form-group is-filled">
+    <div class="row">
+      <div class="col-6">
+          <div class="text-center">
+          </div>
+          <br>
+          <fieldset class="form-group form-group-lg">
+            <input type="text" class="form-control" name="firstName" placeholder="First Name" [(ngModel)]="athlete.firstName" ng-required="expression">
+          </fieldset>
+      </div>
+      <div class="col-6">
+          <div class="text-center">
+          </div>
+          <br>
+          <fieldset class="form-group form-group-lg">
+            <input type="text" class="form-control" name="lastName" placeholder="Last Name" [(ngModel)]="athlete.lastName" ng-required="expression">
+          </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Country" [formControl]="control" [matAutocomplete]="auto" [(ngModel)]="athlete.country">
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let country of filteredCountries | async" [value]="country.codice">
+                {{ 'COUNTRY.' + country.codice | translate }}
+              </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <div class="text-center">
+        </div>
+        <br>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          [(ngModel)]="athlete.gender"
+          [ngModelOptions]="{standalone: true}">
+          <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+            {{'REGISTRY.' + gender | translate}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="Birth Date" [(ngModel)]="athlete.birthDate" [ngModelOptions]="{standalone: true}">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+          <fieldset class="form-group form-group-lg">
+            <input type="text" class="form-control" name="birthPlace" placeholder="Birth Place" [(ngModel)]="athlete.birthPlace" ng-required="expression">
+          </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+          <div class="text-center">
+          </div>
+          <br>
+          <mat-select placeholder="{{ 'REGISTRY.TYPE' | translate }}" [(ngModel)]="athlete.type" name="type">
+            <mat-option *ngFor="let type of types" [value]="type">
+              {{ 'REGISTRY.' + type | translate }}
+            </mat-option>
+          </mat-select>
+      </div>
+      <div class="col-6">
+          <div class="text-center">
+          </div>
+          <br>
+          <app-sport-select (selected)='sportChanged($event)' (sportList)="sportRoles($event)"></app-sport-select>
+      </div>
+    </div>
+    <div *ngIf="athlete.type=='PLAYER'" class="row">
+      <div class="col-6">
+        <div class="text-center">
+        </div>
+        <br>
+        <mat-select placeholder="{{ 'REGISTRY.ROLE' | translate }}" [(ngModel)]="athlete.roles" name="role" multiple>
+          <mat-option *ngFor="let role of roles" [value]="role">
+            {{ 'REGISTRY.' + role.role | translate }}
+          </mat-option>
+        </mat-select>
+      </div>
+      <div class="col-6">
+        <div class="text-center">
+        </div>
+        <br>
+        <mat-select placeholder="{{ 'REGISTRY.LATERALITY' | translate }}" [(ngModel)]="athlete.laterality" name="laterality" ariaLabel="types[0]">
+          <mat-option *ngFor="let laterality of lateralities" [value]="laterality">
+            {{ 'REGISTRY.' + laterality | translate }}
+          </mat-option>
+        </mat-select>
+      </div>
+    </div>
+  </form>
+</mat-card-content>
+<mat-card-actions>
+  <button mat-raised-button (click)="insertAthlete()" class="btn btn-block btn-lg btn-primary m-t-2">{{ 'DASHBOARD.INSERT_ATHLETE' | translate }}</button>
+</mat-card-actions>
+<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+

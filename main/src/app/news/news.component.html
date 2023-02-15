@@ -1,0 +1,18 @@
+<div class="sub-content">
+  <div class="row">
+    <div *ngFor="let p of news; let i=index;" class="card-text card-content col-md-6 col-xl-4 col-lg-6 col-12 p-3"
+      (click)="openNews(i)">
+      <div class="img-div">
+        <img class="img-content" src="{{ p.urlToImage }}">
+      </div>
+      <div class="text-div">
+        <h4 class="text-center fo-wt-900 title-content">{{ p.title }}</h4>
+      </div>
+    </div>
+  </div>
+  <div class="slide-text d-flex mt-3" *ngIf="availMaquee">
+    <marquee onmouseout="this.start();" onmouseover="this.stop();" width="100%" height="100%">
+      <span *ngFor="let p of news; let i=index;" (click)="openNews_caro(i)"> -- {{p.title}} -- </span>
+    </marquee>
+  </div>
+</div>

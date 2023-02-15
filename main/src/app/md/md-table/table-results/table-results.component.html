@@ -1,0 +1,54 @@
+<form>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon"><i class="glyphicon glyphicon-search"></i></div>
+      <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString">
+    </div>
+  </div>
+</form>
+
+<div class="content table-responsive" *ngIf="data">
+  <div *ngFor="let groupData of data | groupBy:'prestige'">
+    <div *ngFor="let row of groupData.value | groupBy:'nation'">
+      <div *ngFor="let subrow of row.value | groupBy:'tournamentId'">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <td colspan="7" class="text-left flag tournament">
+                  <img src="./assets/img/flags/{{row.key}}.png" alt="">
+                  {{subrow.value[0].tournamentName}}
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of subrow.value | filter : ['homeTeam', 'awayTeam'] : searchString; let i = index" id="{{row.key}}">
+              <td class="text-left logo logo-sm">
+                <img src="{{url_logo_teams}}/{{item.homeTeamCode}}.png" alt=""
+                     onError="this.src='';"
+                />
+              </td>
+              <td class="text-right team">
+                {{item.homeTeam}}
+              </td>
+              <td class="text-right score">
+                {{item.homeScore}}
+              </td>
+              <td class="text-left score">
+                {{item.awayScore}}
+              </td>
+              <td class="text-left team">
+                {{item.awayTeam}}
+              </td>
+              <td class="text-right logo logo-sm">
+                <img src="{{url_logo_teams}}/{{item.awayTeamCode}}.png" alt=""
+                     onError="this.src='';"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

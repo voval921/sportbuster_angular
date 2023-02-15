@@ -1,0 +1,3 @@
+<router-outlet *ngIf = "loading == false"></router-outlet>
+<ngx-loading class="loading-custom loading-first" [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"></ngx-loading>

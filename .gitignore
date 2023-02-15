@@ -1,0 +1,32 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+**mappa
+**countries
+
+### STS ###
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+### PIXEL ADMIN ###
+#**libs
+**node_modules
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+nbdist/
+src/main/resources/static/img/fanta/
+log/
+
+public/assets/**

@@ -1,0 +1,18 @@
+<mat-card-content>
+  <div class="row">
+    <div class="col-12">
+      <p class="text-center logout-text">{{'USER.LOGOUT_CONFIRM' | translate}}</p>
+    </div>
+  </div>
+</mat-card-content>
+<button class="opecityZero position-abusolute" id="setFocus"></button>
+<mat-card-actions>
+  <button mat-raised-button (click)="cancel()" id="cancelButton"
+    class="log-height logout-height btn btn-block btn-lg btn-primary m-t-2">Cancel</button>
+</mat-card-actions>
+<mat-card-actions>
+  <button mat-raised-button (click)="logout()"
+    class="log-height logout-height btn btn-block btn-lg btn-primary m-t-2">Yes</button>
+</mat-card-actions>
+<ngx-loading class="loading-custom" [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"></ngx-loading>

@@ -1,0 +1,52 @@
+<div class="sub-content">
+  <h1 class="text-center">News</h1>
+  <div class="row text-white">
+    <div *ngIf="firstNews" class="card-text co-md-12 p-3" (click)="openNews(0)">
+      <div class="img-div-first row">
+        <div class="col-lg-7 col-xl-7 first-content">
+          <div class="first-img">
+            <img class="w-100" src="{{firstNews.urlToImage}}">
+          </div>
+        </div>
+        <div class="col-lg-5 col-xl-5 first-content">
+          <div class="first-desc">
+            <h2 class="text-center fo-wt-900">{{ firstNews.title }}</h2>
+            <p>{{firstNews.content}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let p of news | slice:1:3; let i=index;" class="news-content card-text col-md-6 p-3"
+      (click)="openNews(i+1)">
+      <div class="img-div-con">
+        <img class="w-100 h-100" src="{{p.urlToImage}}">
+        <h5 class="text-center fo-wt-900">{{p.title}}</h5>
+        <p class="desc-content">{{p.content}}</p>
+      </div>
+    </div>
+    <div *ngFor="let p of news | slice:3; let i=index;" class="news-content card-text  col-md-6 col-xl-4 col-lg-6 col-12 p-3"
+      (click)="openNews(i+3)">
+      <div class="img-div">
+        <img class="w-100 h-100" src="{{p.urlToImage}}">
+        <h5 class="text-center fo-wt-900">{{p.title}}</h5>
+      </div>
+    </div>
+  </div>
+
+  <div class="content" infinite-scroll [infiniteScrollDistance]="0.01" [infiniteScrollThrottle]="100"
+    (scrolled)="onScroll()">
+    <div class="row">
+      <div *ngFor="let p of news | slice:9; let i=index;" class="card-text col-md-6 col-xl-4 col-lg-6 col-12 p-3 news-content"
+        (click)="openNews(i+7)">
+        <div class="img-div">
+          <img class="w-100 h-100" src="{{p.urlToImage}}">
+          <h5 class="text-center fo-wt-900">{{p.title}}</h5>
+        </div>      
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <ngx-loading class="loading-custom" [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+      [template]="customLoadingTemplate"></ngx-loading>
+  </div> -->
+</div>

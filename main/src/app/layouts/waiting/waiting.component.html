@@ -1,0 +1,19 @@
+<div class="confirm-spinner">
+  <div class="waiting-content">
+    <p class="text-center">Wait for a moment, Please </p>
+  </div>
+  <div *ngIf="loading" class="spin-waiting">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div *ngIf="!loading && confirm == 'success'" class="alert-confirm alert alert-success" role="alert">
+    Successfully registered!
+  </div>
+  <div *ngIf="!loading && confirm == 'danger'" class="alert-confirm alert alert-danger" role="alert">
+    Failed!
+  </div>
+</div>

@@ -1,0 +1,267 @@
+<div class="page-categories">
+  <ul class="nav nav-pills nav-pills-warning nav-pills-icons justify-content-center" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#classification" role="tablist">
+        <i class="material-icons">list</i>
+        Classification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#fastestLaps" role="tablist">
+        <i class="material-icons">access_time</i>
+        Fastest Lap
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#speedTrap" role="tablist">
+        <i class="material-icons">offline_bolt</i>
+        Speedtrap
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#starting" role="tablist">
+        <i class="material-icons">reorder</i>
+        Starting
+      </a>
+    </li>
+  </ul>
+  <div class="tab-content tab-space tab-subcategories">
+
+    <div class="tab-pane active" id="classification">
+      <div class="content table-responsive" *ngIf="data">
+        <div *ngFor="let dataSession of this.dataPresentation">
+
+          <table *ngIf="dataSession.sessionType == 'QUALIFYING'" class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <td colspan="7" class="text-left flag tournament">
+                  <img src="./assets/img/flags/{{dataSession.nation}}.png" alt="">
+                  {{dataSession.tournamentName}} - {{'SPORT.' + dataSession.sessionType | translate}}
+                </td>
+              </tr>
+              <tr>
+                <th class="text-left position">
+                  Pos.
+                </th>
+                <th class="text-left name">
+                  Pilot
+                </th>
+                <th class="text-left name">
+                  Team
+                </th>
+                <th class="text-left time" *ngFor="let manche of dataSession.numberOfManches | orderBy: ['manche','ASC']">
+                  Q{{manche.manche}}
+                </th>
+                <th class="text-left laps">
+                  Laps
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pilotResult of dataSession.results | orderBy: ['position','ASC']">
+                <td class="text-left position">
+                  {{pilotResult.position}}
+                </td>
+                <td class="text-left name">
+                  {{pilotResult.pilotCompactName}}
+                </td>
+                <td class="text-left team">
+                  {{pilotResult.team}}
+                </td>
+                <td *ngFor="let fastestLap of pilotResult.fastestLap | orderBy: ['manche','ASC']" class="text-left time">
+                  {{fastestLap.time}}
+                </td>
+                <td class="text-left laps">
+                  {{pilotResult.laps}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table *ngIf="dataSession.sessionType == 'RACE'" class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <td colspan="7" class="text-left flag tournament">
+                <img src="./assets/img/flags/{{dataSession.nation}}.png" alt="">
+                {{dataSession.tournamentName}} - {{'SPORT.' + dataSession.sessionType | translate}}
+              </td>
+            </tr>
+            <tr>
+              <th class="text-left position">
+                Pos.
+              </th>
+              <th class="text-left name">
+                Pilot
+              </th>
+              <th class="text-left team">
+                Team
+              </th>
+              <th class="text-left laps">
+                Laps
+              </th>
+              <th class="text-left laps">
+                Time/Final
+              </th>
+              <th class="text-center laps">
+                Diff.
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pilotResult of dataSession.results | orderBy: ['position','ASC']">
+              <td class="text-left position">
+                {{pilotResult.position}}
+              </td>
+              <td class="text-left name">
+                {{pilotResult.pilotCompactName}}
+              </td>
+              <td class="text-left team">
+                {{pilotResult.team}}
+              </td>
+              <td class="text-left laps">
+                {{pilotResult.laps}}
+              </td>
+              <td class="text-left laps">
+                {{pilotResult.finalResult}}
+              </td>
+              <td class="text-center laps">
+                {{pilotResult.difference}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="fastestLaps">
+      <div class="content table-responsive" *ngIf="data">
+        <div *ngFor="let dataSession of this.dataPresentation">
+          <table *ngIf="dataSession.sessionType == 'RACE'" class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <td colspan="7" class="text-left flag tournament">
+                <img src="./assets/img/flags/{{dataSession.nation}}.png" alt="">
+                {{dataSession.tournamentName}} - {{'SPORT.' + dataSession.sessionType | translate}}
+              </td>
+            </tr>
+            <tr>
+              <th class="text-left fullName">
+                Pilot
+              </th>
+              <th class="text-left team">
+                Team
+              </th>
+              <th class="text-left time">
+                Time
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pilotResult of dataSession.results | orderBy: ['absoluteFastestLap','ASC']">
+              <td class="text-left fullName">
+                {{pilotResult.pilotSurname}} {{pilotResult.pilotName}}
+              </td>
+              <td class="text-left team">
+                {{pilotResult.team}}
+              </td>
+              <td class="text-left time">
+                {{pilotResult.absoluteFastestLap}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="speedTrap">
+      <div class="content table-responsive" *ngIf="data">
+        <div *ngFor="let dataSession of this.dataPresentation">
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <td colspan="7" class="text-left flag tournament">
+                <img src="./assets/img/flags/{{dataSession.nation}}.png" alt="">
+                {{dataSession.tournamentName}} - {{'SPORT.' + dataSession.sessionType | translate}}
+              </td>
+            </tr>
+            <tr>
+              <th class="text-left fullName">
+                Pilot
+              </th>
+              <th class="text-left team">
+                Team
+              </th>
+              <th class="text-left time">
+                Time
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pilotResult of dataSession.results | orderBy: ['speedTrap','DESC']">
+              <td class="text-left fullName">
+                {{pilotResult.pilotSurname}} {{pilotResult.pilotName}}
+              </td>
+              <td class="text-left team">
+                {{pilotResult.team}}
+              </td>
+              <td class="text-left time">
+                {{pilotResult.speedTrap}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-pane" id="starting">
+      <div class="content table-responsive" *ngIf="data">
+        <div *ngFor="let dataSession of this.dataPresentation">
+          <table *ngIf="dataSession.sessionType == 'RACE'" class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <td colspan="7" class="text-left flag tournament">
+                <img src="./assets/img/flags/{{dataSession.nation}}.png" alt="">
+                {{dataSession.tournamentName}} - {{'SPORT.' + dataSession.sessionType | translate}}
+              </td>
+            </tr>
+            <tr>
+              <th class="text-left Extposition">
+                Pos.
+              </th>
+              <th class="text-left fullName">
+                Pilot
+              </th>
+              <th class="text-left team">
+                Team
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let pilotResult of dataSession.results | orderBy: ['startingPosition','ASC']">
+              <td class="text-left Extposition">
+                {{pilotResult.startingPosition}}
+              </td>
+              <td class="text-left fullName">
+                {{pilotResult.pilotSurname}} {{pilotResult.pilotName}}
+              </td>
+              <td class="text-left team">
+                {{pilotResult.team}}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+

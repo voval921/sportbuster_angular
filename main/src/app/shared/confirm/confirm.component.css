@@ -1,0 +1,36 @@
+.confirm-content {
+  color: white;
+  overflow-x: hidden;
+  padding: 0px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  height: 250px;
+}
+
+.card-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirm-icon {
+  height: 80px;
+}
+
+.error-banmark {
+  height: 80px;
+}
+
+.confirm-button {
+  width: 150px;
+  height: 50px;
+}
+
+.confirm-text {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.confirm-message {
+  margin-top: 10px;
+}

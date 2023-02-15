@@ -1,0 +1,50 @@
+.profile-form {
+    width: 60%;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profile-form p {
+    font-weight: 800;
+    font-size: 50px;
+}
+
+.profile-content p {
+    font-size: 25px;
+}
+
+.content-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.uneditable {
+    background-color: inherit !important;
+}
+
+.example-margin {
+    margin-right: 40px;
+    margin-bottom: 0px !important;
+}
+
+.profile-label {
+    color: white;
+    width: 20%;
+    /* margin-right: 30px; */
+    margin-top: 15px;
+}
+.profile-content a {
+    cursor: pointer !important;
+}
+.a-profile {
+    width: 10%;
+    padding: 0px !important;
+    margin-top: 15px;
+}
+.example-gender {
+    margin-top: 13px;
+}
+.form-group-lg .form-control {
+    padding-left: 0px !important;
+}

@@ -1,0 +1,38 @@
+ <div ng-controller="MenuHeadersController" id="sportbusers-main-navbar">
+    <nav class="navbar sb-navbar">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav">
+          <a class="navbar-brand" href="/">
+            <img class="logo" src="assets/icon/logo.png" alt="" />
+          </a>
+        </ul>
+      </div>
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sb-demo-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+      <div class="collapse navbar-collapse" id="sb-demo-navbar-collapse">
+        <ul ng-controller="LoginController as ctrl" class="nav navbar-nav navbar-right">
+          <li>
+            <a ng-if="!loggedUser" href="#" ng-click="ctrl.open('/login', 'custom-dialog-container', 'signInView')">Sign In</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="m-r-1"></i>
+              <img class="flag_language" src="assets/icon/round_flag/ITA.png" alt="" />
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="">English</a></li>
+              <li><a href="">Italian</a></li>
+              <li><a href="">Spanish</a></li>
+            </ul>
+          </li>
+          <li ng-if="loggedUser" class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+              <i class="sb-navbar-icon fa fa-user"></i>
+              <span class="hidden-md" id="logged-user"></span>
+            </a>
+            <ul class="dropdown-menu" ng-include="'src/app/modules/login/login.html'" class="dropdown-menu" ng-controller="LoginController as ctrl">
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+ </div>

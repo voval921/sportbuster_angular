@@ -1,0 +1,39 @@
+.card-content {
+  color: white;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.news-content {
+  overflow-x: hidden;
+  padding: 0px;
+  background: rgba(0, 0, 0, 0.8);
+}
+.desc-content {
+  padding: 20px 40px;
+}
+.title-content {
+  padding: 10px 20px;
+}
+.img-div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+}
+.img-content {
+  width: 70%;
+}
+@media only screen and (max-width: 800px) {
+  .title-content {
+    font-size: 20px;
+  }
+  .desc-content {
+    font-size: 15px;
+  }
+  .img-content {
+    width: 80%;
+  }
+}

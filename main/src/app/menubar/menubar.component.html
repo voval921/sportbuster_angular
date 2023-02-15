@@ -1,0 +1,65 @@
+<!-- <div class="row align-items-center d-flex item-weight justify-content-between">
+  <div class="logo col-md-1 col-sm-1">
+    <a href="index.html"><img class="d-flex mr-auto ml-auto" src="../../assets/img/sb.png" alt="LOGO" title="" /></a>
+  </div>
+  <div class="col-md-8 col-sm-8 col-7">
+    <div class="row menu-block">
+      <div [ngClass]="menuitem.selected ? 'menu-click-color' : ''" routerLinkActive="active"
+        *ngFor="let menuitem of menuItems; let i = index" class="nav-item col-md-3 col-sm-3">
+        <a class="nav-link nav-link-extra" id="menu_{{menuitem.path}}"
+          (click)="gotoItem(i)">
+          <p>{{menuitem.title}}</p>
+        </a>
+      </div>
+    </div>
+    <i class="fa fa-bars hamber-block" (click)="newMenu()"></i>
+  </div>
+  <div class="col-md-3 col-sm-3 col-5">
+    <div class="row nav-end">
+      <div routerLinkActive="active">
+        <a class="nav-link nav-link-extra" [routerLink]="" (click)="openDialog()">
+          <p class="text-white">Sign in</p>
+        </a>
+      </div>
+      <div class="nav-item">
+        <div class="dropdown pull-left lang-top">
+          <app-language></app-language>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div [ngClass]="menu_show ? 'new-menu-block' : ''" class="mobile-view-block" (click)="hideMenu()">
+  <ul class="p-0 mt-3">
+    <div class="w-50">
+      <a href="index.html"><img class="w-25 ml-3" src="../../assets/img/sb.png" alt="LOGO" title="" /></a>
+    </div>
+    <div [ngClass]="menuitem.selected ? 'menu-click-color' : ''" routerLinkActive="active"
+      *ngFor="let menuitem of menuItems; let i = index" class="ml-auto mr-auto nav-item col-md-3 col-sm-3">
+      <a *ngIf="menuitem.type === 'link'" class="nav-link-extra" id="menu_{{menuitem.path}}"
+        (click)="gotoItem(i)">
+        <p>{{menuitem.title}}</p>
+      </a>
+    </div>
+  </ul>
+</div> -->
+
+<!-- <button id="closemenu" class="hide-item" (click)="hideMenu()"> -->
+
+<!-- </button> -->
+
+<div class="fo-wt-700">
+  <div class="row nav-end">
+    <div routerLinkActive="active">
+      <a *ngIf="!loggedUser" class="nav-link nav-link-extra" [routerLink]="" (click)="openDialog()">
+        <p class="text-white sign-hover">Sign in</p>
+      </a>
+    </div>
+    <app-userbox></app-userbox>
+    <div class="nav-item">
+      <div class="dropdown pull-left lang-top">
+        <app-language></app-language>
+      </div>
+    </div>
+  </div>
+</div>

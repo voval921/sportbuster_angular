@@ -1,0 +1,13 @@
+<mat-form-field class="w-100 nationality">
+  <input type="text" matInput placeholder="Country" [formControl]="control" [matAutocomplete]="auto"
+    [(ngModel)]="country" (ngModelChange)="changeSelectionValue()" required>
+  <mat-error>
+    Country is required
+  </mat-error>
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
+    (optionSelected)='changeSelection($event.option.value)'>
+    <mat-option *ngFor="let country of filteredCountries | async" [value]="country.codice">
+      {{ 'COUNTRY.' + country.codice | translate }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

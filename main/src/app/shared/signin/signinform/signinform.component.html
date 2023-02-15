@@ -1,0 +1,70 @@
+<mat-card-content class="signin-form">
+  <div class="row">
+    <div class="col-12">
+      <form [formGroup]="signForm" class="form-group bmd-form-group is-filled" (ngSubmit)="login()" novalidate>
+        <h3 class="text-center text-white mt-2">{{'USER.LOGIN' | translate}}</h3>
+        <div *ngIf="failed_login" class="failed-login">
+          <p>Incorrect email or password</p>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Username" type="text" class="form-control log-text" name="username"
+              placeholder="{{'USER.USERNAME' | translate}}" required>
+            <mat-error>
+              {{'USER.USERNAME_REQUIRED' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Password" type="password" class="form-control log-text" name="password"
+              placeholder="{{'USER.PASSWORD' | translate}}" required>
+            <mat-error>
+              {{'USER.PASSWORD_REQUIRED' | translate}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!-- <fieldset class="form-group form-group-lg">
+          <input formControlName="Password" type="password" class="form-control log-text" name="password"
+            placeholder="{{'USER.PASSWORD' | translate}}" required>
+        </fieldset> -->
+        <div class="clearfix">
+          <p class="text-white">
+            <a href="javascript:void(0)" class="a-hover-log text-white font-size-12 pull-xs-right fo-wt-700"
+              (click)="gotoForgot()">{{'USER.PASSWORD_FORGOTTEN' | translate}}</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card-content>
+<mat-card-actions>
+  <button mat-raised-button (click)="login()"
+    class="log-height btn btn-block btn-lg btn-primary m-b-2">{{'USER.SIGNIN' | translate}}</button>
+</mat-card-actions>
+<div class="log-other">
+  <div class="row">
+    <div class="col-md-12 button-big">
+      <button class="btn btn-primary log-face  button-big"><i
+          class="fa fa-facebook"></i>{{'USER.FACEBOOK_SIGNIN' | translate}}</button>
+    </div>
+    <div class="col-md-12 col-6 button-small">
+      <button class="btn btn-primary log-face "><i class="fa fa-facebook"></i></button>
+    </div>
+    <div class="col-md-12 button-big">
+      <button class="btn btn-primary log-google"><i
+          class="fa fa-google-plus"></i>{{'USER.GOOGLE_SIGNIN' | translate}}</button>
+    </div>
+    <div class="col-md-12 col-6 button-small">
+      <button class="btn btn-primary log-google"><i class="fa fa-google-plus"></i></button>
+    </div>
+  </div>
+</div>
+<div class="text-xs-center font-weight-bold font-size-12">
+  <p class="text-white text-center m-b-0">{{'USER.NOT_MEMBER' | translate}}
+    <a href="javascript:void(0)" class="text-white a-hover-log"
+      (click)="goToSingUp()">{{'USER.SIGNUP_NOW' | translate}}</a>
+  </p>
+</div>
+<ngx-loading class="loading-custom" [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+  [template]="customLoadingTemplate"></ngx-loading>

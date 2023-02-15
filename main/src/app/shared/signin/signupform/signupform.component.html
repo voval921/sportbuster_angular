@@ -1,0 +1,132 @@
+<mat-card-content class="signup-form">
+  <div class="row formstate" *ngIf="formstate=='form1'">
+    <div class="col-12">
+      <form [formGroup]="signForm1" class="form-group bmd-form-group is-filled" novalidate>
+        <h3 class="text-center text-white">Sign Up</h3>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Username" type="text" class="form-control log-text" name="username"
+              placeholder="Username" required>
+            <mat-error>
+              Username is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Email" type="Email" class="form-control log-text" name="email"
+              placeholder="Email" required>
+            <mat-error *ngIf="getForm1.Email.hasError('required')">
+              Email is required
+            </mat-error>
+            <mat-error *ngIf="getForm1.Email.hasError('email')">
+              Email type is wrong
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Password" type="password" class="form-control log-text" name="password"
+              placeholder="Password" required>
+            <mat-error *ngIf="getForm1.Password.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="!getForm1.Password.hasError('required') && getForm1.Password.hasError('pattern')">
+              At least 8 characters, at least one uppercase letter and one number.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="ConfirmPassword" type="password" class="form-control log-text"
+              name="ConfirmPassword" placeholder="Retype your password" required />
+            <mat-error
+              *ngIf="!getForm1.ConfirmPassword.hasError('required') && getForm1.ConfirmPassword.hasError('mustMatch')">
+              Password Mismatch
+            </mat-error>
+            <mat-error *ngIf="getForm1.ConfirmPassword.hasError('required')">
+              Confirm Password is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row formstate" *ngIf="formstate=='form2'">
+    <div class="col-12">
+      <form [formGroup]="signForm2" class="form-group bmd-form-group is-filled" novalidate>
+        <h3 class="text-center text-white">Sign Up</h3>
+        <!-- <div class="text-center">
+             <button class="btn btn-just-icon btn-facebook mat-raised-button m-r-1" mat-raised-button=""><span class="mat-button-wrapper"><i class="fa fa-facebook"></i></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+             <button class="btn btn-just-icon btn-google mat-raised-button" mat-raised-button=""><span class="mat-button-wrapper"><i class="fa fa-google-plus"></i></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button>
+            </div> -->
+        <div class="form-group form-group-lg required_part">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Firstname" type="text" class="form-control log-text" name="firstname"
+              placeholder="First name" required>
+            <mat-error>
+              Username is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg required_part">
+          <mat-form-field class="w-100">
+            <input matInput formControlName="Lastname" type="text" class="form-control log-text" name="lastname"
+              placeholder="Last name" required>
+            <mat-error>
+              Lastname is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group form-group-lg required_part">
+          <app-country-autocomplete [Country]="SelectedCountry" (optionSelected)='countrySelected($event)' State="edit">
+          </app-country-autocomplete>
+        </div>
+        <div class="form-group form-group-lg required_part">
+          <mat-form-field class="w-100 birthdate">
+            <input matInput [matDatepicker]="picker" placeholder="Birthday" #pickerInput formControlName="Birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+            <mat-error>
+              {{getErrorMessage(pickerInput.value)}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <fieldset class="form-group form-group-lg">
+          <input formControlName="Birthplace" type="text" class="form-control log-text" name="birthplace"
+            placeholder="Birthplace">
+        </fieldset>
+        <fieldset class="form-group form-group-lg mb-2">
+          <input formControlName="Phonenumber" type="number" class="form-control log-text" name="phonenumber"
+            placeholder="Phonenumber">
+        </fieldset>
+        <div class="form-group form-group-lg required_part">
+          <mat-radio-group aria-label="Select an option" formControlName="Gender">
+            <label class="example-margin">Gender:</label>
+            <mat-radio-button class="example-gender" value="M">Male</mat-radio-button>
+            <mat-radio-button class="example-gender" value="F">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card-content>
+<br />
+<div class="text-xs-center font-weight-bold font-size-12 d-flex">
+  <div *ngIf="formstate == 'form2'" class="formstate_pre mr-auto">
+    <a href="javascript:void(0)" class="text-white a-hover-log" (click)="callform_pre()"><i
+        class="material-icons">arrow_back</i>Previous</a>
+  </div>
+  <div *ngIf="formstate == 'form2'" class="formstate_pre ml-auto">
+    <a href="javascript:void(0)" class="text-white a-hover-log" [class.disabledtag]="!signForm2.valid || country==''"
+      (click)="signUp()">Confirm</a>
+  </div>
+  <div *ngIf="formstate == 'form1'" class="formstate_next mr-auto">
+    <a href="javascript:void(0)" class="text-white a-hover-log" (click)="callform_back()">Back to login</a>
+  </div>
+  <div *ngIf="formstate == 'form1'" class="formstate_next ml-auto">
+    <a href="javascript:void(0)" class="text-white a-hover-log" [class.disabledtag]="!signForm1.valid"
+      (click)="callform_next()">Next<i class="material-icons">arrow_forward</i></a>
+  </div>
+</div>

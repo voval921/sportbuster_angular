@@ -1,0 +1,11 @@
+<mat-select
+  placeholder="{{ 'REGISTRY.YEAR' | translate }}"
+  [(ngModel)]="selectedYear"
+  name="year"
+  (selectionChange)="changeYear($event.value)"
+>
+  <mat-option *ngFor="let year of years" [value]="year">
+    {{ year }}
+  </mat-option>
+</mat-select>
+

@@ -1,0 +1,87 @@
+.sub-content {
+    color: white;
+}
+.card-text {
+    padding: 0px;
+}
+
+.card-content {
+    transition: transform 0.5s;
+    max-height: 650px;
+    cursor: pointer;
+}
+
+.card-content:hover {
+    -ms-transform: scale(1.05);
+    /* IE 9 */
+    -webkit-transform: scale(1.05);
+    /* Safari 3-8 */
+    transform: scale(1.05);
+}
+
+.img-content {
+    width: 100%;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+    display: block;
+}
+
+.custom-caruosel {
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.custom-caruosel:hover {
+    -ms-transform: scale(1.05);
+    /* IE 9 */
+    -webkit-transform: scale(1.05);
+    /* Safari 3-8 */
+    transform: scale(1.05);
+}
+
+.img-div {
+    height: 75%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.text-div {
+    display: flex;
+    justify-content: center;
+}
+.slide-text marquee {
+    cursor: pointer;
+}
+.main-canvas {
+    outline: 1px solid #dddddd;;
+    width: 300px;
+    height: 300px;
+    margin: 50px auto 0;
+    position: relative;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 100px;
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 100px;
+    text-align: center;
+    cursor: move;
+}
+
+.box1 { left: 0; top: 0;  background-color: #E74C3C; }
+.box2 { left: 100px; top: 0; background-color: #8E44AD; }
+.box3 { left: 200px; top: 0; background-color: #5DADE2; }
+.box4 { left: 0; top: 100px; background-color: #1ABC9C; }
+.box5 { left: 100px; top: 100px; background-color: #F1C40F; }
+.box6 { left: 200px; top: 100px; background-color: #F39C12; }
+.box7 { left: 0; top: 200px; background-color: #34495E; }
+.box8 { left: 100px; top: 200px; background-color: #FF00FF; }
+.box9 { left: 200px; top: 200px; background-color: #008080; }

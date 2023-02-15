@@ -1,0 +1,10 @@
+<mat-form-field>
+  <mat-select placeholder="placeHolder" name="tournament"
+              [(ngModel)]="choices[0].id"
+              (selectionChange)="changeTournament($event.value)"
+              >
+    <mat-option *ngFor="let tournament of choices" [value]="tournament.id">
+      {{ tournament.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

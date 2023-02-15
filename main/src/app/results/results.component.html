@@ -1,0 +1,50 @@
+<div class="main-content">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="nav nav-pills nav-pills-warning" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" (click)="loadMyChildComponent('FOOTBALL');" data-toggle="tab" href="#results-football" role="tablist">
+              <img class="sport" src="./assets/img/sport/FOOTBALL.png" alt="">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="loadMyChildComponent('BASKETBALL');" data-toggle="tab" href="#results-basketball" role="tablist">
+              <img class="sport" src="./assets/img/sport/BASKETBALL.png" alt="">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="loadMyChildComponent('TENNIS');" data-toggle="tab" href="#results-tennis" role="tablist">
+              <img class="sport" src="./assets/img/sport/TENNIS.png" alt="">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="loadMyChildComponent('FORMULA1');" data-toggle="tab" href="#results-formual1" role="tablist">
+              <img class="sport" src="./assets/img/sport/FORMULA1.png" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tab-content tab-space">
+      <div class="tab-pane active" id="results-football" *ngIf="loadComponent == 'FOOTBALL'">
+        <app-results-football></app-results-football>
+      </div>
+
+      <div class="tab-pane" id="results-basketball" *ngIf="loadComponent == 'BASKETBALL'">
+        <app-results-basketball></app-results-basketball>
+      </div>
+
+      <div class="tab-pane" id="results-tennis" *ngIf="loadComponent == 'TENNIS'">
+        Tennis
+      </div>
+
+      <div class="tab-pane" id="results-formual1" *ngIf="loadComponent == 'FORMULA1'">
+        <app-results-formula1></app-results-formula1>
+      </div>
+
+    </div>
+
+  </div>

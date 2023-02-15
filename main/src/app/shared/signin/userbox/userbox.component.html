@@ -1,0 +1,22 @@
+<div class="user" *ngIf="loggedUser">
+  <div class="photo">
+    <!-- <img src="./assets/img/faces/marc.jpg" /> -->
+  </div>
+  <a class="nav-link user-info" data-toggle="dropdown" role="button" id="profileImage" aria-haspopup="true"
+    aria-expanded="false"><p>{{ intials|uppercase }}</p></a>
+  <ul class="dropdown-menu custom-drop-menu dropdown-menu-right custom-profile">
+    <li>
+      <a [routerLink]="['/profile']" class="nav-link"><i class="material-icons">person</i><span class="sidebar-normal">Profile</span>
+      </a>
+    </li>
+    <li>
+      <a [routerLink]="['/customize']" class="nav-link"><i class="material-icons">edit</i><span class="sidebar-normal">Customize</span>
+      </a>
+    </li>
+    <li class="custom-divider fc-divider"></li>
+    <li>
+      <a href="javascript:void(0)" class="nav-link" (click)="logout()"><i class="material-icons">exit_to_app</i><span class="sidebar-normal">logout</span>
+      </a>
+    </li>
+  </ul>
+</div>

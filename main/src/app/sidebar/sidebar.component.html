@@ -1,0 +1,36 @@
+<div class="sidebar-content">
+  <div class="menu-icon hamber-block" (click)="newMenuRoute()" (mouseover)="mouseOverEvent()"
+    (mouseout)="mouseLeaveEvent()">
+    <div class="delay-1"
+      [ngClass]="{'menu-icon-bar menu-icon-background':!mouseOverState, 'menu-icon-bar-long menu-icon-background-long':mouseOverState}">
+    </div>
+    <div class="delay-2"
+      [ngClass]="{'menu-icon-bar-long menu-icon-background':!mouseOverState, 'menu-icon-bar menu-icon-background-long':mouseOverState}">
+    </div>
+    <div class="delay-3"
+      [ngClass]="{'menu-icon-bar menu-icon-background':!mouseOverState, 'menu-icon-bar-long menu-icon-background-long':mouseOverState}">
+    </div>
+    <div class="delay-4"
+      [ngClass]="{'menu-icon-bar-long menu-icon-background':!mouseOverState, 'menu-icon-bar menu-icon-background-long':mouseOverState}">
+    </div>
+
+    <!-- <div class="delay-1" [ngClass]="{'menu-icon-bar-1':!mouseOverState, 'menu-icon-bar-long-1':mouseOverState}">
+    </div>
+    <div class="delay-2" [ngClass]="{'menu-icon-bar-long-2':!mouseOverState, 'menu-icon-bar-2':mouseOverState}">
+    </div>
+    <div class="delay-3" [ngClass]="{'menu-icon-bar-1':!mouseOverState, 'menu-icon-bar-long-1':mouseOverState}">
+    </div>
+    <div class="delay-4" [ngClass]="{'menu-icon-bar-long-2':!mouseOverState, 'menu-icon-bar-2':mouseOverState}">
+    </div> -->
+  </div>
+  <div class="side-block" [ngClass]="side_clicked ? 'side-clicked' : ''" (click)="hideMenu()">
+    <div class="side-mt">
+      <div [ngClass]="menuitem.selected ? 'menu-click-color' : ''" routerLinkActive="active"
+        *ngFor="let menuitem of menuItems; let i = index" class="mt-3 mr-auto ml-auto nav-item col-md-3 col-sm-4 col-7">
+        <a [routerLink]="[menuitem.path]" class="a-inherit nav-link nav-link-extra" (click)="gotoItem(i)">
+          <p class="mr-auto ml-auto text-center">{{menuitem.title}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+
+@media (max-width: 400px) {
+    .button-big {
+        display: none;
+    }
+    .button-small {
+        display: block;
+    }    
+    .log-other i {
+        margin-right: 0px !important;
+    }
+}
+
+@media (min-width: 400px) {
+    .button-big {
+        display: block;
+    }
+    .button-small {
+        display: none;
+    }
+}
+
+.log-other i {
+    margin-right: 10px;
+}
+.text-xs-center {
+    width: 120%;
+}
+.text-xs-center p {
+    margin-left: -32px;
+}
+.failed-login {
+    color: red;
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: -15px;
+    margin-top: -2px;
+}

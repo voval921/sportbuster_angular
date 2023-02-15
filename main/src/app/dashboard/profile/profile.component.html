@@ -1,0 +1,217 @@
+<mat-card-content>
+  <div class="profile-form mb-5">
+    <div class="row profile-content">
+      <div class="col-12">
+        <form [formGroup]="profileForm" class="form-group bmd-form-group is-filled" novalidate>
+          <p class="text-center text-white mt-4 mb-3">User</p>
+          <div class="row content-center">
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Username:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <input matInput formControlName="Username" type="text" class="form-control log-text" name="username"
+                    required>
+                  <mat-error *ngIf="checkForm.Username.hasError('required')">
+                    Username is required
+                  </mat-error>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableUsername()" *ngIf="checkForm.Username.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableUsername()" *ngIf="!checkForm.Username.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Email:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <input formControlName="Email" type="eamil" class="form-control log-text" name="email" required>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableEmail()" *ngIf="checkForm.Email.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableEmail()" *ngIf="!checkForm.Email.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Password:</label>
+                </div>
+                <div class="col-md-10 col-12">
+                  <input formControlName="Password" type="password" class="form-control log-text" name="password"
+                    placeholder="Password" required>
+                  <!-- <mat-error *ngIf="checkForm.Password.hasError('required')">
+                    Password is required
+                  </mat-error>
+                  <mat-error *ngIf="!checkForm.Password.hasError('required') && checkForm.Password.hasError('pattern')">
+                    At least 8 characters, at least one uppercase letter and one number.
+                  </mat-error> -->
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Firstname:</label>
+                </div>
+                <div class="col-md-10 col-12">
+                  <input formControlName="Firstname_un" type="text" class="form-control log-text uneditable"
+                    name="fistname" placeholder="Firstname" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Lastname:</label>
+                </div>
+                <div class="col-md-10 col-12">
+                  <input formControlName="Lastname_un" type="text" class="form-control log-text uneditable"
+                    name="lastname" placeholder="Lastname" required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Usertype:</label>
+                </div>
+                <div class="col-md-10 col-12">
+                  <input formControlName="Usertype" type="text" class="form-control log-text" name="Usertype"
+                    placeholder="Usertype" required value="{{ role_text | translate }}">
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10">
+              <p class="text-center text-white mt-4 mb-3">Personal</p>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Firstname:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <input formControlName="Firstname" type="text" class="form-control log-text" name="fistname" required>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableFirstname()" *ngIf="checkForm.Firstname.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableFirstname()" *ngIf="!checkForm.Firstname.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Lastname:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <input formControlName="Lastname" type="text" class="form-control log-text" name="lastname" required>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableLastname()" *ngIf="checkForm.Lastname.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableLastname()" *ngIf="!checkForm.Lastname.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Country:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <app-country-autocomplete class="w-100" Country="{{SelectedCountry}}" State="{{editable}}"
+                    (optionSelected)='countrySelected($event)'>
+                  </app-country-autocomplete>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableCountry()" *ngIf="editable=='save'"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableCountry()" *ngIf="editable=='edit'"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Birthday:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <mat-form-field class="w-100 birthdate">
+                    <input matInput [matDatepicker]="picker" placeholder="Birthday" formControlName="Birthday">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableBirthday()" *ngIf="checkForm.Birthday.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableBirthday()" *ngIf="!checkForm.Birthday.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10 d-flex">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Birthplace:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <input formControlName="Birthplace" type="text" class="form-control log-text" name="birthplace"
+                    placeholder="Birthplace" required>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableBirthplace()" *ngIf="checkForm.Birthplace.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableBirthplace()" *ngIf="!checkForm.Birthplace.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group form-group-lg col-md-10">
+              <div class="w-100 row">
+                <div class="col-md-2 col-10">
+                  <label class="profile-label">Gender:</label>
+                </div>
+                <div class="col-md-9 col-10">
+                  <input *ngIf="checkForm.Gender_text.disabled" formControlName="Gender_text" type="text"
+                    class="form-control log-text" name="gender" placeholder="Gender" required>
+                  <mat-radio-group *ngIf="!checkForm.Gender_text.disabled" aria-label="Select an option"
+                    formControlName="Gender" (change)='genderSelection($event)'>
+                    <mat-radio-button class="example-gender" value="M">Male</mat-radio-button>
+                    <mat-radio-button class="example-gender" value="F">Female</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+                <div class="col-md-1 col-2">
+                  <a class="nav-link a-profile" (click)="editableGender()" *ngIf="checkForm.Gender_text.disabled"><i
+                      class="material-icons">edit</i></a>
+                  <a class="nav-link a-profile" (click)="disableGender()" *ngIf="!checkForm.Gender_text.disabled"><i
+                      class="material-icons">save</i></a>
+                </div>
+              </div>
+            </div>
+            <mat-card-actions class="d-flex">
+              <button mat-raised-button (click)="gotodashboard()"
+                class="log-height btn btn-block btn-lg btn-primary m-t-2 m-r-3">Cancel</button>
+              <button mat-raised-button (click)="confirmProfile()"
+                class="log-height btn btn-block btn-lg btn-primary m-t-2">Confirm</button>
+            </mat-card-actions>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-card-content>

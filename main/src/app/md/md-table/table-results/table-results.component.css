@@ -1,0 +1,35 @@
+td.team {
+  width: 34% !important;
+}
+
+td.score {
+  width: 12% !important;
+}
+
+td.logo {
+  width: 4% !important;
+}
+
+td.tournament {
+  font-weight: bold;
+  font-size: medium;
+}
+
+:host {
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+app-scroll-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+app-scroll-container.full {
+  flex-basis: auto;
+}
+
+app-scroll-container.part {
+  flex-basis: 200px;
+}

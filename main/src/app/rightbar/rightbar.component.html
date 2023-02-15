@@ -1,0 +1,18 @@
+<div routerLinkActive="active" *ngFor="let menuitem of menuItems; let i = index" class="nav-item row right-content"
+  (scroll)="scrollHandler($event)">
+
+  <div class="d-flex ml-auto align-items-center">
+    <a class="nav-link nav-link-extra" id="menu_{{menuitem.path}}" (click)="gotoItem(i)"
+      [ngClass]="{'title-first': !menuitem.hover, 'title-second': menuitem.hover}">
+      <p [ngClass]="menuitem.selected ? 'change-color':''" class="text-center my-0">{{menuitem.title}}</p>
+    </a>
+    <div class="co-po h-100 d-flex align-items-center" (mouseover)="overMouse(i)" (mouseleave)="leaveMouse(i)"
+      (click)="gotoItem(i)">
+      <div [ngClass]="{'line-right': !menuitem.hover, 'line-right-first': menuitem.hover}" *ngIf="!menuitem.selected">
+      </div>
+      <div class="line-right-first change-bg-color" (click)="gotoItem(i)" *ngIf="menuitem.selected">
+      </div>
+    </div>
+  </div>
+  <!-- <div class="line-right-first"></div> -->
+</div>

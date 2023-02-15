@@ -1,0 +1,8 @@
+<mat-select placeholder="{{ 'REGISTRY.SPORT' | translate }}"
+            [(ngModel)]="selectedSport" name="sport"
+            (selectionChange)="changeSport($event.value)"
+>
+  <mat-option *ngFor="let sport of sports" [value]="sport">
+    {{ 'SPORT.' + sport.sport | translate }}
+  </mat-option>
+</mat-select>

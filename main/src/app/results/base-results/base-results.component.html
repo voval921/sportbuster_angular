@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-7"></div>
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker"
+             placeholder="Choose a date"
+             (click)="picker.open()"
+             [formControl]="myDate"
+             (dateChange)="onDate(myDate)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="content table-responsive" *ngIf="filtersLoaded | async"
+             infinite-scroll
+             [infiniteScrollDistance]="2"
+             [infiniteScrollThrottle]="300"
+             (scrolled)="handleScroll()"
+        >
+          <app-table-results [data]="resultsParams.tableData" [selectedSport]="resultsParams.selectedSport">
+          </app-table-results>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2"></div>
+</div>
+

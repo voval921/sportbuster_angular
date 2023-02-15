@@ -1,0 +1,9 @@
+<mat-select placeholder="{{ 'REGISTRY.COMPETITION' | translate }}"
+            [(ngModel)]="selectedCompetition" name="competition"
+            (selectionChange)="changeCompetition($event.value)"
+            multiple
+>
+  <mat-option *ngFor="let competition of competitions" [value]="competition">
+    {{ competition.nome}}
+  </mat-option>
+</mat-select>

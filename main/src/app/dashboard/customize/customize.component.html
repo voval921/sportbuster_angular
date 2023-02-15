@@ -1,0 +1,52 @@
+<div class="customize-page">
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-white text-center m-b-4 m-t-2">Sports</p>
+    </div>
+    <div class="col-md-6 col-6 d-flex">
+      <div class="example-container-active contain-example">
+        <div cdkDropList #todoList1="cdkDropList" [cdkDropListData]="active_sport" [cdkDropListConnectedTo]="[doneList1]"
+          class="example-list" (cdkDropListDropped)="activeCustomization($event, USER_SPORT)">
+          <div class="example-box" *ngFor="let item of active_sport" cdkDrag>
+            <p class="activeSport">{{ 'SPORT.' + item.value | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-6 d-flex">
+      <div class="example-container-inactive contain-example">
+        <div cdkDropList #doneList1="cdkDropList" [cdkDropListData]="unactive_sport" [cdkDropListConnectedTo]="[todoList1]"
+          class="example-list" (cdkDropListDropped)="unactiveCustomization($event, USER_SPORT)">
+          <div class="example-box" *ngFor="let item of unactive_sport" cdkDrag>
+            <p>{{ 'SPORT.' + item.value | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p class="text-white text-center m-b-4 m-t-2">News</p>
+    </div>
+    <div class="col-md-6 col-6 d-flex">
+      <div class="example-container-active contain-example">
+        <div cdkDropList #todoList2="cdkDropList" [cdkDropListData]="active_sport_news" [cdkDropListConnectedTo]="[doneList2]"
+          class="example-list" (cdkDropListDropped)="activeCustomization($event, USER_SPORT_NEWS)">
+          <div class="example-box" *ngFor="let item of active_sport_news" cdkDrag>
+            <p class="activeNews">{{ 'SPORT.' + item.value | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-6 d-flex">
+      <div class="example-container-inactive contain-example">
+        <div cdkDropList #doneList2="cdkDropList" [cdkDropListData]="unactive_sport_news" [cdkDropListConnectedTo]="[todoList2]"
+          class="example-list" (cdkDropListDropped)="unactiveCustomization($event, USER_SPORT_NEWS)">
+          <div class="example-box" *ngFor="let item of unactive_sport_news" cdkDrag>
+            <p>{{ 'SPORT.' + item.value | translate }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

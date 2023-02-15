@@ -1,0 +1,30 @@
+<div class="container">
+  <mat-dialog-content class="confirm-content">
+    <div class="row card-option">
+      <div class="card-content">
+        <div *ngIf="data.status" class="confirm-icon">
+          <div class="success-checkmark">
+            <div class="check-icon">
+              <span class="icon-line line-tip"></span>
+              <span class="icon-line line-long"></span>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="!data.status" class="error-banmark">
+          <div class="ban-icon">
+            <span class="icon-line-error line-long-invert"></span>
+            <span class="icon-line-error line-long-error"></span>
+          </div>
+        </div>
+        <div class="confirm-message">
+          <p class="text-center confirm-text">{{data.message}}</p>
+        </div>
+        <div class="confirm-button">
+          <mat-card-actions>
+            <button mat-raised-button class="confirm-button log-height btn btn-block btn-lg btn-primary m-t-2" (click)="confirm()">OK</button>
+          </mat-card-actions>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

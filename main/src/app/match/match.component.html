@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <app-sport-select (selected)='sportChanged($event)'></app-sport-select>
+      </div>
+      <div class="col-3">
+        <app-component-select [selectedSport]="selectedSport" (selected)='competitionChanged($event)'></app-component-select>
+      </div>
+      <div class="col-1">
+        <app-select-year [data]="yearSelectData" (selected)='yearChanged($event)'></app-select-year>
+      </div>
+      <button class="btn btn-danger mat-raised-button" (click)="recoverData()" mat-raised-button="">
+        <span class="mat-button-wrapper">Danger</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
